@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>四週手機攝影課｜從構圖到修圖，拍出你想記錄的生活</title>
+<meta name="description" content="四週手機攝影課，一週練一件小事：構圖、光線、角度與時機、修圖調色。為新手設計，不用買器材，手機就夠。早鳥 NT$880，前 30 名。">
+<style>
+  /* ===== 改主色只要改這一行 ===== */
+  :root{
+    --main:#E8744F;        /* 主色：暖橘 */
+    --main-dark:#C85A38;   /* 主色加深（按鈕 hover、深字） */
+    --ink:#2B2622;         /* 主要文字 */
+    --soft:#6F665E;        /* 次要文字 */
+    --bg:#FAF7F3;          /* 頁面底色 */
+    --card:#FFFFFF;        /* 卡片底色 */
+    --line:#ECE5DC;        /* 線條 */
+    --tint:#FDEFE8;        /* 主色淡底 */
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* 整頁裝在一個窄欄裡（手機優先） */
+  .wrap{
+    width:100%;
+    margin:0 auto;
+    background:var(--bg);
+    min-height:100vh;
+  }
+
+  section{padding:48px 24px;}
+
+  h1{font-size:30px;line-height:1.35;font-weight:800;letter-spacing:-.5px;}
+  h2{font-size:23px;line-height:1.4;font-weight:800;margin-bottom:20px;letter-spacing:-.3px;}
+  p{font-size:16px;color:var(--soft);}
+
+  .lead{font-size:17px;color:var(--ink);}
+
+  /* 按鈕 */
+  .btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    background:var(--main);
+    color:#fff;
+    font-size:18px;
+    font-weight:800;
+    padding:18px 20px;
+    border-radius:14px;
+    text-decoration:none;
+    box-shadow:0 8px 20px rgba(232,116,79,.32);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:active{transform:scale(.98);}
+  .btn:hover{background:var(--main-dark);}
+  .btn-note{
+    text-align:center;
+    font-size:13px;
+    color:var(--soft);
+    margin-top:12px;
+  }
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(180deg,var(--tint) 0%,var(--bg) 100%);
+    text-align:center;
+    padding-top:56px;
+    padding-bottom:44px;
+  }
+  .hero .kicker{
+    display:inline-block;
+    background:var(--main);
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:20px;
+    letter-spacing:.5px;
+  }
+  .hero h1{margin-bottom:16px;}
+  .hero h1 .hl{color:var(--main-dark);}
+  .hero .sub{font-size:17px;color:var(--soft);margin-bottom:28px;}
+
+  /* Pain */
+  .pain h2{text-align:center;}
+  .pain-list{display:flex;flex-direction:column;gap:14px;margin-top:8px;}
+  .pain-item{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px 18px 18px 18px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+  }
+  .pain-item .x{
+    flex:none;
+    width:26px;height:26px;
+    border-radius:50%;
+    background:var(--tint);
+    color:var(--main-dark);
+    font-weight:800;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;
+    margin-top:2px;
+  }
+  .pain-item p{color:var(--ink);font-size:16px;}
+
+  /* Solution */
+  .solution{background:var(--tint);}
+  .solution h2{text-align:center;}
+  .solution .intro{text-align:center;margin-bottom:28px;color:var(--ink);font-size:16px;}
+  .steps{display:flex;flex-direction:column;gap:14px;}
+  .step{
+    background:var(--card);
+    border-radius:14px;
+    padding:20px;
+    display:flex;
+    gap:16px;
+    align-items:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.04);
+  }
+  .step .wk{
+    flex:none;
+    width:54px;height:54px;
+    border-radius:14px;
+    background:var(--main);
+    color:#fff;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    line-height:1.1;
+  }
+  .step .wk small{font-size:11px;opacity:.85;font-weight:600;}
+  .step .wk b{font-size:22px;font-weight:800;}
+  .step .txt b{display:block;font-size:18px;color:var(--ink);margin-bottom:2px;}
+  .step .txt span{font-size:14px;color:var(--soft);}
+
+  /* Offer */
+  .offer h2{text-align:center;}
+  .offer .sub{text-align:center;margin-bottom:26px;}
+  .offer-list{display:flex;flex-direction:column;gap:14px;}
+  .offer-item{
+    display:flex;gap:14px;align-items:flex-start;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px;
+  }
+  .offer-item .ck{
+    flex:none;
+    width:26px;height:26px;border-radius:50%;
+    background:var(--main);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:800;margin-top:2px;
+  }
+  .offer-item b{display:block;font-size:16px;color:var(--ink);}
+  .offer-item span{font-size:14px;color:var(--soft);}
+
+  /* Testimonial */
+  .testi{background:var(--ink);color:#fff;}
+  .testi h2{text-align:center;color:#fff;}
+  .testi-list{display:flex;flex-direction:column;gap:16px;}
+  .quote{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:16px;
+    padding:22px;
+  }
+  .quote p{color:#F4EFEA;font-size:16px;line-height:1.75;margin-bottom:12px;}
+  .quote .who{font-size:14px;color:var(--main);font-weight:700;}
+  .quote .mark{color:var(--main);font-size:34px;line-height:0;font-weight:800;}
+
+  /* Pricing */
+  .pricing{text-align:center;}
+  .price-card{
+    background:var(--card);
+    border:2px solid var(--main);
+    border-radius:20px;
+    padding:32px 24px;
+    box-shadow:0 12px 30px rgba(232,116,79,.15);
+  }
+  .badge{
+    display:inline-block;background:var(--main);color:#fff;
+    font-size:13px;font-weight:800;padding:6px 16px;border-radius:999px;
+    margin-bottom:18px;letter-spacing:.5px;
+  }
+  .price-old{font-size:17px;color:var(--soft);text-decoration:line-through;}
+  .price-now{font-size:48px;font-weight:800;color:var(--main-dark);line-height:1.1;margin:4px 0;}
+  .price-now small{font-size:20px;font-weight:700;}
+  .price-extra{font-size:14px;color:var(--soft);margin:14px 0 24px;}
+  .price-extra b{color:var(--ink);}
+
+  /* CTA */
+  .cta{
+    background:linear-gradient(180deg,var(--tint) 0%,var(--bg) 100%);
+    text-align:center;
+  }
+  .cta h2{margin-bottom:10px;}
+  .cta p{margin-bottom:26px;}
+
+  /* FAQ */
+  .faq h2{text-align:center;}
+  details{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:0 18px;
+    margin-bottom:12px;
+  }
+  summary{
+    list-style:none;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:700;
+    color:var(--ink);
+    padding:18px 0;
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"＋";
+    color:var(--main);
+    font-size:20px;
+    font-weight:800;
+    flex:none;
+  }
+  details[open] summary::after{content:"－";}
+  details p{padding:0 0 18px;color:var(--soft);font-size:15px;}
+
+  /* Footer */
+  footer{
+    text-align:center;
+    padding:28px 24px 40px;
+    font-size:13px;
+    color:var(--soft);
+  }
+
+  /* ===== 電腦 / 平板：撐開成寬版（背景鋪滿整個螢幕，內容置中） ===== */
+  @media (min-width:700px){
+    section{padding:80px 32px;}
+
+    /* 每個區塊的內容置中、限制好讀寬度；背景照樣鋪滿整片螢幕 */
+    section > *{
+      max-width:1040px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    h1{font-size:46px;}
+    h2{font-size:30px;margin-bottom:32px;}
+
+    .hero{padding-top:88px;padding-bottom:72px;}
+    .hero .sub{font-size:19px;}
+
+    /* 卡片區改成多欄，把寬畫面填滿 */
+    .pain-list{display:grid;grid-template-columns:repeat(3,1fr);align-items:start;}
+    .steps{display:grid;grid-template-columns:repeat(2,1fr);}
+    .offer-list{display:grid;grid-template-columns:repeat(2,1fr);}
+    .testi-list{display:grid;grid-template-columns:repeat(3,1fr);align-items:start;}
+
+    /* 按鈕不要拉成整排寬 */
+    .btn{max-width:360px;margin-left:auto;margin-right:auto;}
+
+    /* 價格卡維持精巧置中 */
+    .price-card{max-width:460px;margin-left:auto;margin-right:auto;}
+
+    /* 問答區窄一點比較好讀 */
+    .faq details{max-width:760px;margin-left:auto;margin-right:auto;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <span class="kicker">四週手機攝影課</span>
+    <h1>同樣的風景，為什麼<br>別人拍起來<span class="hl">就是比較美</span>？</h1>
+    <p class="sub">不用換相機，也不用記一堆參數。<br>一週練一件小事，四週就拍出你想記錄的生活。</p>
+    <a href="#" class="btn">我要報名 →</a>
+    <p class="btn-note">早鳥 NT$880，前 30 名額滿恢復原價</p>
+  </section>
+
+  <!-- 2. PAIN -->
+  <section class="pain">
+    <h2>你是不是也這樣？</h2>
+    <div class="pain-list">
+      <div class="pain-item">
+        <div class="x">1</div>
+        <p>同樣的風景，別人拍起來很美，自己拍就是很普通。</p>
+      </div>
+      <div class="pain-item">
+        <div class="x">2</div>
+        <p>看一堆教學越看越亂，每個都在講不同的 app 跟參數。</p>
+      </div>
+      <div class="pain-item">
+        <div class="x">3</div>
+        <p>想好好記錄生活，可是照片拍出來總是不夠好看。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SOLUTION -->
+  <section class="solution">
+    <h2>把拍照拆成四件小事</h2>
+    <p class="intro">不用一次學完所有東西。<br>一週只練一件，做得到才往下走。</p>
+    <div class="steps">
+      <div class="step">
+        <div class="wk"><small>第</small><b>1</b><small>週</small></div>
+        <div class="txt"><b>構圖</b><span>畫面怎麼擺，照片就先成功一半</span></div>
+      </div>
+      <div class="step">
+        <div class="wk"><small>第</small><b>2</b><small>週</small></div>
+        <div class="txt"><b>光線</b><span>學會看光，照片自然有質感</span></div>
+      </div>
+      <div class="step">
+        <div class="wk"><small>第</small><b>3</b><small>週</small></div>
+        <div class="txt"><b>角度與時機</b><span>同一個東西，換個角度差很多</span></div>
+      </div>
+      <div class="step">
+        <div class="wk"><small>第</small><b>4</b><small>週</small></div>
+        <div class="txt"><b>修圖調色</b><span>最後一步，把照片變成你的風格</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. OFFER -->
+  <section class="offer">
+    <h2>報名後你會拿到</h2>
+    <p class="sub">一次付清，無限回看</p>
+    <div class="offer-list">
+      <div class="offer-item">
+        <div class="ck">✓</div>
+        <div><b>四週課程影片</b><span>跟著拍，一步一步來</span></div>
+      </div>
+      <div class="offer-item">
+        <div class="ck">✓</div>
+        <div><b>四張一頁速查卡</b><span>構圖／光線／角度／修圖，拍照時隨手對照</span></div>
+      </div>
+      <div class="offer-item">
+        <div class="ck">✓</div>
+        <div><b>「不用買器材也能拍好」設定清單</b><span>手機原本的功能就夠用</span></div>
+      </div>
+      <div class="offer-item">
+        <div class="ck">✓</div>
+        <div><b>學員私密社群</b><span>拍壞了直接貼照片問，不用自己卡在那邊</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TESTIMONIAL -->
+  <section class="testi">
+    <h2>學員怎麼說</h2>
+    <div class="testi-list">
+      <div class="quote">
+        <div class="mark">“</div>
+        <p>以前拍食物都暗暗的，照著光線卡調位置，現在朋友都問我用什麼相機。</p>
+        <div class="who">庭瑋・上班族</div>
+      </div>
+      <div class="quote">
+        <div class="mark">“</div>
+        <p>本來想花三萬買相機，後來發現手機就拍得出來，省下來去旅行。</p>
+        <div class="who">志豪・新手爸爸</div>
+      </div>
+      <div class="quote">
+        <div class="mark">“</div>
+        <p>每天順手拍一張，變成記錄生活的習慣。</p>
+        <div class="who">Nina・自由工作者</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PRICING -->
+  <section class="pricing">
+    <h2>現在報名最划算</h2>
+    <div class="price-card">
+      <span class="badge">早鳥前 30 名</span>
+      <div class="price-old">原價 NT$1,180</div>
+      <div class="price-now">NT$<small> </small>880</div>
+      <p class="price-extra"><b>一次付清，無限回看。</b><br>名額有限，額滿就恢復原價。</p>
+      <a href="#" class="btn">我要報名 →</a>
+      <p class="btn-note">含四週影片＋速查卡＋設定清單＋私密社群</p>
+    </div>
+  </section>
+
+  <!-- 7. CTA -->
+  <section class="cta">
+    <h2>讓拍照變成記錄生活的習慣</h2>
+    <p>四週後，你也能拍出自己滿意的照片。</p>
+    <a href="#" class="btn">我要報名 →</a>
+    <p class="btn-note">早鳥 NT$880・前 30 名</p>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section class="faq">
+    <h2>常見問題</h2>
+    <details open>
+      <summary>沒學過攝影跟得上嗎？</summary>
+      <p>跟得上。這堂課就是為新手設計的，從最基本的構圖開始，一週練一件，不會一次塞給你太多。</p>
+    </details>
+    <details>
+      <summary>要先買器材嗎？</summary>
+      <p>不用。一支手機就夠了，課程裡還會給你一份「不用買器材也能拍好」的設定清單。</p>
+    </details>
+    <details>
+      <summary>影片能重看嗎？</summary>
+      <p>可以，無限次回看。報名後就一直看得到，自己安排進度也沒問題。</p>
+    </details>
+    <details>
+      <summary>拍壞了能問嗎？</summary>
+      <p>可以。學員私密社群裡，拍壞了直接貼照片上來問，不用自己一個人卡在那邊。</p>
+    </details>
+  </section>
+
+  <footer>
+    © 四週手機攝影課
+  </footer>
+
+</div>
+</body>
+</html>
